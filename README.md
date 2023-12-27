@@ -1,7 +1,7 @@
 MacHyperVSupport
 ================
 
-[![Build Status](https://github.com/acidanthera/MacHyperVSupport/workflows/CI/badge.svg?branch=master)](https://github.com/acidanthera/MacHyperVSupport/actions) [![Scan Status](https://scan.coverity.com/projects/23212/badge.svg?flat=1)](https://scan.coverity.com/projects/23212)
+[![Build Status](https://github.com/devicemanager/MacHyperVSupport/workflows/CI/badge.svg?branch=master)](https://github.com/devicemanager/MacHyperVSupport/actions) [![Scan Status](https://scan.coverity.com/projects/23212/badge.svg?flat=1)](https://scan.coverity.com/projects/23212)
 
 Hyper-V integration services for macOS. Requires a Generation 2 virtual machine on Windows Server 2012 R2 / Windows 8.1 or higher. Windows Server 2016 is currently unsupported.
 
@@ -28,10 +28,10 @@ All Intel macOS versions are supported.
 
 ### OpenCore configuration
 #### ACPI
-- [SSDT-HV-VMBUS](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-VMBUS.dsl): Enables correct Startup Disk operation, ensure patches described within are also configured.
-- [SSDT-HV-DEV](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-DEV.dsl): Required on Windows Server 2019 / Windows 10 and newer, provides proper processor objects and disables incompatible virtual devices under macOS.
-- [SSDT-HV-DEV-WS2022](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-DEV-WS2022.dsl): Required on Windows Server 2022 / Windows 11 and newer, disables addiitonal incompatible virtual devices under macOS.
-- [SSDT-HV-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-PLUG.dsl): Ensures VMPlatformPlugin loads on Big Sur and above, avoids freezes with the default PlatformPlugin.
+- [SSDT-HV-VMBUS](https://github.com/devicemanager/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-VMBUS.dsl): Enables correct Startup Disk operation, ensure patches described within are also configured.
+- [SSDT-HV-DEV](https://github.com/devicemanager/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-DEV.dsl): Required on Windows Server 2019 / Windows 10 and newer, provides proper processor objects and disables incompatible virtual devices under macOS.
+- [SSDT-HV-DEV-WS2022](https://github.com/devicemanager/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-DEV-WS2022.dsl): Required on Windows Server 2022 / Windows 11 and newer, disables addiitonal incompatible virtual devices under macOS.
+- [SSDT-HV-PLUG](https://github.com/devicemanager/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-HV-PLUG.dsl): Ensures VMPlatformPlugin loads on Big Sur and above, avoids freezes with the default PlatformPlugin.
 * Ensure all patches described in above SSDTs are present in `ACPI->Patch`.
 
 #### Booter quirks
@@ -45,8 +45,8 @@ All Intel macOS versions are supported.
 - Quirks
   - `ProvideCurrentCpuInfo` - required for proper TSC/FSB values and CPU topology values.
 - The following additional kernel extensions are required:
-  - [Lilu](https://github.com/acidanthera/Lilu) - patching and library functions
-  - [VirtualSMC](https://github.com/acidanthera/VirtualSMC) - SMC emulator
+  - [Lilu](https://github.com/devicemanager/Lilu) - patching and library functions
+  - [VirtualSMC](https://github.com/devicemanager/VirtualSMC) - SMC emulator
 - Block
   - com.apple.driver.AppleEFIRuntime
     - Required for 32-bit versions of macOS (10.4 and 10.5, and 10.6 in 32-bit mode). EFI runtime services and NVRAM are unavailable in those versions due to incompatiblities with the Hyper-V UEFI.
@@ -103,7 +103,7 @@ See the [module list](Docs/modules.md) for boot arguments for each module.
 ### Credits
 - [Apple](https://www.apple.com) for macOS
 - [Goldfish64](https://github.com/Goldfish64) for this software
-- [vit9696](https://github.com/vit9696) for [Lilu.kext](https://github.com/acidanthera/Lilu) and providing assistance
+- [vit9696](https://github.com/vit9696) for [Lilu.kext](https://github.com/devicemanager/Lilu) and providing assistance
 - [flagers](https://github.com/flagersgit) for file copy implementation and providing assistance
 - [Microsoft Hypervisor Top-Level Functional Specification](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs)
 - [Linux](https://github.com/torvalds/linux/tree/master/drivers/hv) and [FreeBSD](https://github.com/freebsd/freebsd-src/tree/main/sys/dev/hyperv) Hyper-V integration services
